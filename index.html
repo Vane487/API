@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SocialFinder — Пошук Друзів</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="auth-screen" class="auth-container">
+    <form id="auth-form" class="auth-form">
+        <h2>Авторизація</h2>
+        <div class="input-group">
+            <label for="username">Логін</label>
+            <input type="text" id="username" required placeholder="Введіть ваш логін...">
+        </div>
+        <div class="input-group">
+            <label for="password">Пароль</label>
+            <input type="password" id="password" required placeholder="Введіть ваш пароль...">
+        </div>
+        <button type="submit" class="btn-primary">Увійти</button>
+    </form>
+</div>
+
+<div id="main-app" class="app-container hidden">
+    <header class="main-header">
+        <div class="logo">Social<span>Finder</span></div>
+        <div class="user-profile">
+            <span id="current-user-name"></span>
+            <button id="logout-btn" class="btn-logout">Вийти</button>
+        </div>
+    </header>
+
+    <div class="content-wrapper">
+        <aside class="controls-sidebar">
+            <div class="control-section">
+                <h3>Пошук</h3>
+                <input type="search" id="search-input" placeholder="Почніть вводити ім'я...">
+            </div>
+
+            <div class="control-section">
+                <h3>Сортування</h3>
+                <select id="sort-select">
+                    <option value="none">Без сортування</option>
+                    <option value="name-asc">Ім'я (A-Z)</option>
+                    <option value="name-desc">Ім's (Z-A)</option>
+                    <option value="age-asc">Вік (за зростанням)</option>
+                    <option value="age-desc">Вік (за спаданням)</option>
+                    <option value="reg-asc">Дата реєстрації (старіші)</option>
+                    <option value="reg-desc">Дата реєстрації (новіші)</option>
+                </select>
+            </div>
+
+            <div class="control-section">
+                <h3>Фільтри</h3>
+
+                <div class="filter-group">
+                    <label>Стать:</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="gender" value="all" checked> Всі</label>
+                        <label><input type="radio" name="gender" value="male"> Чоловіки</label>
+                        <label><input type="radio" name="gender" value="female"> Жінки</label>
+                    </div>
+                </div>
+
+                <div class="filter-group">
+                    <label for="filter-age">Максимальний вік:</label>
+                    <input type="number" id="filter-age" min="0" max="120" placeholder="Наприклад: 45">
+                </div>
+
+                <div class="filter-group">
+                    <label for="filter-location">Країна або місто:</label>
+                    <input type="text" id="filter-location" placeholder="Наприклад: France">
+                </div>
+            </div>
+
+            <button id="reset-filters" class="btn-reset">Скинути все</button>
+        </aside>
+
+        <main class="main-content">
+            <div id="status-message" class="status-message hidden"></div>
+
+            <div id="users-grid" class="users-grid"></div>
+
+            <div id="infinite-loader" class="loader hidden">Завантажуємо ще друзів...</div>
+
+            <nav class="pagination-container">
+                <ul id="pagination" class="pagination"></ul>
+            </nav>
+        </main>
+    </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
