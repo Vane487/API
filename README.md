@@ -1,1 +1,1 @@
-# API для пошуку користувачів
+# API for user searches 
